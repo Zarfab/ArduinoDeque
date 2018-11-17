@@ -2,6 +2,7 @@
 Defines a templated (generic) class for a double-ended queue of things.
 This code is a modifiation from [Arduino-Queue](https://github.com/sdesalas/Arduino-Queue.h) by Steven de Salas. See his well written readme for more information.
 
+Tested on Arduino Uno and ESP32
 
 ## Constructor
 
