@@ -41,11 +41,11 @@ Same as .pop_front() but keeps the item in the queue.
 
 ### `T item = queue[int i];`
 
-Get the item at index i in the queue. The item will be kept in the queue. If the index is out of bound, an empty item is returned.
+Get the item at index `i` in the queue. The item will be kept in the queue. If the index is out of bound, an empty item is returned.
 
 ### `queue[int i] = T item;`
 
-Set the item at index i in the queue. If the index is out of bound, nothing happens.
+Set the item at index `i` in the queue. If the index is out of bound, nothing happens.
 
 ### `int count = queue.count();`
 
