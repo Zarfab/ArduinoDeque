@@ -53,7 +53,8 @@ class Deque {
       _back = 0;
       _count = 0;
       _maxitems = maxitems;
-      _data = new T[maxitems + 1];   
+      _data = new T[_maxitems + 2];
+      _data[_maxitems + 1] = T();
     }
     ~Deque() {
       delete[] _data;  
@@ -67,7 +68,7 @@ class Deque {
     T peek_back();
     T pop_front();
     T pop_back();
-    T operator[](int index);
+    T& operator[](int index);
     T* to_array();
     T* data_array();
     void clear();
@@ -119,7 +120,8 @@ void Deque<T>::push_back(const T &item)
 
 template<class T>
 T Deque<T>::pop_front() {
-  if(_count <= 0) return T(); // Returns empty
+  if(_count <= 0) 
+    return T(); // Returns empty
   else {
     T result = _data[_front];
     _front++;
@@ -133,7 +135,8 @@ T Deque<T>::pop_front() {
 
 template<class T>
 T Deque<T>::pop_back() {
-  if(_count <= 0) return T(); // Returns empty
+  if(_count <= 0) 
+    return T(); // Returns empty
   else {
     // Check wrap around
     if (_back <= 0) 
@@ -147,8 +150,10 @@ T Deque<T>::pop_back() {
 
 template<class T>
 T Deque<T>::peek_front() {
-  if(_count <= 0) return T(); // Returns empty
-  else return _data[_front];
+  if(_count <= 0)
+    return T(); // Returns empty
+  else
+    return _data[_front];
 }
 
 template<class T>
@@ -160,9 +165,9 @@ T Deque<T>::peek_back() {
 }
 
 template<class T>
-T Deque<T>::operator[](int index) {
+T& Deque<T>::operator[](int index) {
   if(_count <= 0 || index < 0 || index >= _count) 
-    return T(); // Returns empty
+    return _data[_maxitems + 1]; // Returns empty
   else 
     return _data[(_front + index) % (_maxitems + 1)];
 }
@@ -184,7 +189,7 @@ T* Deque<T>::data_array() {
 template<class T>
 void Deque<T>::clear() 
 {
-  _front = _back;
+  _front = _back = 0;
   _count = 0;
 }
 
